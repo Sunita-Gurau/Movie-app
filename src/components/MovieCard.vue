@@ -1,5 +1,5 @@
 <template>
-   <section>
+   <section class="bg-black mx-48 my-8">
       <div class="grid gap-x-8 gap-y-4 grid-cols-5">
         <div v-for="movie in moviesList" :key="movie">
           <div
