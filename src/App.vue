@@ -1,19 +1,14 @@
 <template>
-  <MovieCard></MovieCard>
-  <DetailPage></DetailPage>
+  <div>
+    <router-link to="/movies" style="color: #fff">Movies</router-link>
+
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
-import MovieCard from './components/MovieCard.vue'
-import DetailPage from './components/DetailPage.vue'
-
 export default {
-  name: 'App',
-  components: {
-     MovieCard,
-     DetailPage
-  }
-}
+  name: "App",
+  components: {},
+};
 </script>
-
-
