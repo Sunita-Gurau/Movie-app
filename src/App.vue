@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-link to="/movies" style="color: #fff">Movies</router-link>
+    <router-link to="/movies" class="text-white">Movies</router-link>
 
     <router-view></router-view>
   </div>

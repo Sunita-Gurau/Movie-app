@@ -100,15 +100,17 @@
     <div class="w-1/4">
       <p class="pl-3 pb-3 text-xl text-white font-bold">Similar Movies</p>
       <div
-        class="flex mb-3"
+        class="flex mb-3 flex-col"
         v-for="suggestion in suggestions"
-        :key="suggestion"
+        :key="suggestion.id"
       >
-        <img
-          class="border-4 border-white ml-3 w-48 h-48"
-          :src="suggestion.medium_cover_image"
-          :alt="suggestion.title"
-        />
+        <router-link :to="'/movie/' + suggestion.id">
+          <img
+            class="border-4 border-white ml-3 w-48 h-48"
+            :src="suggestion.medium_cover_image"
+            :alt="suggestion.title"
+          />
+        </router-link>
       </div>
     </div>
   </section>
@@ -122,20 +124,17 @@ export default {
     return {
       details: [],
       suggestions: [],
-      movieId: "",
     };
   },
   created() {
-    this.movieId = this.$route.params.movieId;
+    const { movieId } = this.$route.params;
     axios
-      .get(`https://yts.mx/api/v2/movie_details.json?movie_id=${this.movieId}`)
+      .get(`https://yts.mx/api/v2/movie_details.json?movie_id=${movieId}`)
       .then((result) => (this.details = result.data.data.movie))
       .catch((error) => console.log(error));
 
     axios
-      .get(
-        `https://yts.mx/api/v2/movie_suggestions.json?movie_id=${this.movieId}`
-      )
+      .get(`https://yts.mx/api/v2/movie_suggestions.json?movie_id=${movieId}`)
       .then((response) => (this.suggestions = response.data.data.movies))
       .catch((error) => console.log(error));
   },

@@ -1,7 +1,7 @@
 import { createWebHistory, createRouter } from 'vue-router'
-import MovieCard from "./components/MovieCard.vue";
 import DetailPage from "./components/DetailPage.vue";
 import PaginationPage from "./components/DetailPage.vue";
+import MoviesPage from "./Pages/Movies.vue";
 
 
 
@@ -9,12 +9,12 @@ const routes = [
     {
         name: 'Home',
         path: '/',
-        component: MovieCard
+        component: MoviesPage
     },
     {
         name: 'MovieCard',
         path: '/movies',
-        component: MovieCard
+        component: MoviesPage
     },
     {
         name: 'DetailPage',
