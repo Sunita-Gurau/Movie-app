@@ -104,13 +104,14 @@
         v-for="suggestion in suggestions"
         :key="suggestion.id"
       >
-        <router-link :to="'/movie/' + suggestion.id">
+        <div>
           <img
             class="border-4 border-white ml-3 w-48 h-48"
             :src="suggestion.medium_cover_image"
             :alt="suggestion.title"
+            @click="onSuggestionClick(suggestion.id)"
           />
-        </router-link>
+        </div>
       </div>
     </div>
   </section>
@@ -128,16 +129,28 @@ export default {
   },
   created() {
     const { movieId } = this.$route.params;
-    axios
-      .get(`https://yts.mx/api/v2/movie_details.json?movie_id=${movieId}`)
-      .then((result) => (this.details = result.data.data.movie))
-      .catch((error) => console.log(error));
-
-    axios
-      .get(`https://yts.mx/api/v2/movie_suggestions.json?movie_id=${movieId}`)
-      .then((response) => (this.suggestions = response.data.data.movies))
-      .catch((error) => console.log(error));
+    this.getMovie(movieId);
+    this.getSimilarMovies(movieId);
   },
-  async mounted() {},
+  methods: {
+    getMovie(movieId) {
+      axios
+        .get(`https://yts.mx/api/v2/movie_details.json?movie_id=${movieId}`)
+        .then((result) => (this.details = result.data.data.movie))
+        .catch((error) => console.log(error));
+    },
+    getSimilarMovies(movieId) {
+      axios
+        .get(`https://yts.mx/api/v2/movie_suggestions.json?movie_id=${movieId}`)
+        .then((response) => (this.suggestions = response.data.data.movies))
+        .catch((error) => console.log(error));
+    },
+    onSuggestionClick(movieId) {
+      this.getMovie(movieId);
+      this.getSimilarMovies(movieId);
+      this.$router.push(`/movie/${movieId}`);
+    },
+  },
+  mounted() {},
 };
 </script>

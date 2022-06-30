@@ -1,15 +1,7 @@
 <template>
   <section class="bg-black mx-48 my-8">
     <div class="grid gap-x-8 gap-y-4 grid-cols-5">
-      <MovieCard
-        msg="My name is sunita"
-        :title="moviesList.title"
-        :image="moviesList.image"
-        :rating="moviesList.rating"
-        :genres="moviesList.genres"
-        :id="moviesList.id"
-        :year="moviesList.year"
-      />
+      <MovieCard v-for="movie in moviesList" :key="movie.id" :movie="movie" />
     </div>
   </section>
 </template>
@@ -33,8 +25,11 @@ export default {
   methods: {
     fetchData() {
       axios
-        .get("https://yts.mx/api/v2/list_movies.json?page=")
-        .then(({ response }) => (this.moviesList = response.data.data.movies))
+        .get("https://yts.mx/api/v2/list_movies.json?page=1")
+        .then(({ data }) => {
+          this.moviesList = data.data.movies;
+          console.log(this.moviesList);
+        })
         .catch((error) => console.log(error));
     },
   },

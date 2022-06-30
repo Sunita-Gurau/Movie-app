@@ -1,6 +1,5 @@
 import { createWebHistory, createRouter } from 'vue-router'
 import DetailPage from "./components/DetailPage.vue";
-import PaginationPage from "./components/DetailPage.vue";
 import MoviesPage from "./Pages/Movies.vue";
 
 
@@ -21,11 +20,6 @@ const routes = [
         path: '/movie/:movieId',
         component: DetailPage
     },
-    {
-        name: 'PaginationPage',
-        path: '/PaginationPage',
-        component: PaginationPage
-    }
 ];
 
 const router = createRouter({
