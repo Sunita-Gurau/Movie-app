@@ -1,6 +1,5 @@
 <template>
   <div>
-    <p class="text-white">{{ movie.msg }}</p>
     <div class="border-4 border-white hover:border-green-500 relative group">
       <a href="">
         <img :src="`${movie.medium_cover_image}`" :alt="movie.title" />
@@ -36,7 +35,6 @@
 </template>
 
 <script>
-// import Movies from "@/components/Movies.vue";
 export default {
   name: "MovieCard",
   props: {

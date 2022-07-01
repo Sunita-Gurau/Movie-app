@@ -46,7 +46,6 @@ export default {
       var response = await axios(
         `https://yts.mx/api/v2/list_movies.json?page=${this.currentPage}`
       );
-      console.log(response);
       var responseData = response.data.data.movies;
       this.moviesList = responseData;
       this.perPage = response.data.data.limit;
