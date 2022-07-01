@@ -6,7 +6,7 @@
         <img :src="`${movie.medium_cover_image}`" :alt="movie.title" />
       </a>
       <div
-        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
+        class="absolute !top-1/2 !left-1/2 !transform !-translate-x-1/2 !-translate-y-1/2 z-10"
       >
         <div
           class="text-center hidden group-hover:block hover:transition-all hover:duration-500 hover:delay-300 hover:ease-in-out"
@@ -16,7 +16,9 @@
           <p class="text-white text-2xl font-bold pt-5">
             {{ movie.genres[0] }}
           </p>
-          <p class="text-white text-2xl font-bold">{{ movie.genres[1] }}</p>
+          <p class="text-white text-2xl font-bold mb-5">
+            {{ movie.genres[1] }}
+          </p>
           <router-link
             :to="'/movie/' + movie.id"
             class="bg-green-500 text-white text-sm px-2 py-2 mt-5 font-semibold rounded"
