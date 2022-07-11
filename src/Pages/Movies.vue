@@ -40,12 +40,12 @@ export default {
   methods: {
     pageChange(pageNumber) {
       this.currentPage = pageNumber;
+      this.$router.push(`/movies/${this.currentPage}`);
+
       this.fetchData();
     },
     async fetchData() {
-      var response = await axios(
-        `https://yts.mx/api/v2/list_movies.json?page=${this.currentPage}`
-      );
+      var response = await axios(`list_movies.json?page=${this.currentPage}`);
       var responseData = response.data.data.movies;
       this.moviesList = responseData;
       this.perPage = response.data.data.limit;

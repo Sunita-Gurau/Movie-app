@@ -23,7 +23,7 @@
         {{ details.title }}
       </h1>
       <p class="text-white text-sm font-bold">{{ details.year }}</p>
-      <p class="text-white font-bold">{{ details.genres }}</p>
+      <p class="text-white font-bold">{{ details.genres.join(", ") }}</p>
       <div class="flex items-center">
         <p class="text-white font-bold italic mr-2">Available in:</p>
         <p class="text-white text-xs border-[1px] border-white px-2 mr-2">
@@ -135,13 +135,13 @@ export default {
   methods: {
     getMovie(movieId) {
       axios
-        .get(`https://yts.mx/api/v2/movie_details.json?movie_id=${movieId}`)
+        .get(`movie_details.json?movie_id=${movieId}`)
         .then((result) => (this.details = result.data.data.movie))
         .catch((error) => console.log(error));
     },
     getSimilarMovies(movieId) {
       axios
-        .get(`https://yts.mx/api/v2/movie_suggestions.json?movie_id=${movieId}`)
+        .get(`movie_suggestions.json?movie_id=${movieId}`)
         .then((response) => (this.suggestions = response.data.data.movies))
         .catch((error) => console.log(error));
     },

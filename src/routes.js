@@ -1,5 +1,5 @@
 import { createWebHistory, createRouter } from 'vue-router'
-import DetailPage from "./components/DetailPage.vue";
+import DetailPage from "./Pages/DetailPage.vue";
 import MoviesPage from "./Pages/Movies.vue";
 
 
@@ -12,7 +12,7 @@ const routes = [
     },
     {
         name: 'MovieCard',
-        path: '/movies',
+        path: '/movies/:page',
         component: MoviesPage
     },
     {

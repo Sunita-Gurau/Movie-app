@@ -12,12 +12,16 @@
         >
           <i class="fa-solid fa-star text-green-500 text-3xl pb-3"></i>
           <p class="text-white text-2xl font-bold">{{ movie.rating }}</p>
-          <p class="text-white text-2xl font-bold pt-5">
-            {{ movie.genres[0] }}
+          <p
+            v-for="genre in movie.genres"
+            :key="genre"
+            class="text-white text-2xl font-bold pt-2 mb-2"
+          >
+            {{ genre }}
           </p>
-          <p class="text-white text-2xl font-bold mb-5">
+          <!-- <p class="text-white text-2xl font-bold mb-5">
             {{ movie.genres[1] }}
-          </p>
+          </p> -->
           <router-link
             :to="'/movie/' + movie.id"
             class="bg-green-500 text-white text-sm px-2 py-2 mt-5 font-semibold rounded"
@@ -38,7 +42,10 @@
 export default {
   name: "MovieCard",
   props: {
-    movie: {},
+    movie: {
+      required: true,
+      type: Object,
+    },
   },
 };
 </script>
