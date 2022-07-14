@@ -29,7 +29,7 @@ export default {
   data() {
     return {
       currentPage: 1,
-      total: 42438,
+      total: 4,
       perPage: 20,
       moviesList: [],
     };

@@ -26,4 +26,7 @@ const router = createRouter({
     history: createWebHistory(),
     routes
 })
-export default router 
+export default router
+
+// movies?page=2
+// movies/2

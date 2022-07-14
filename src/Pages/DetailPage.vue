@@ -148,7 +148,7 @@ export default {
     onSuggestionClick(movieId) {
       this.getMovie(movieId);
       this.getSimilarMovies(movieId);
-      this.$router.push(`/movie/${movieId}`);
+      this.$router.push(`/movie_id/${movieId}`);
     },
   },
   mounted() {},
