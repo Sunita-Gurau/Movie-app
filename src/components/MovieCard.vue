@@ -23,7 +23,7 @@
             {{ movie.genres[1] }}
           </p> -->
           <router-link
-            :to="'/movie/' + movie.id"
+            :to="'/movie_id/' + movie.id"
             class="bg-green-500 text-white text-sm px-2 py-2 mt-5 font-semibold rounded"
             >View Details</router-link
           >
@@ -31,14 +31,28 @@
       </div>
     </div>
 
+    <!-- slot -->
     <div class="pl-2">
-      <p class="text-white text-lg font-bold truncate">{{ movie.title }}</p>
-      <p class="text-neutral-300 text-sm">{{ movie.year }}</p>
+      <p class="text-white text-lg font-bold truncate">
+        <TitleYear>
+          ><template v-slot:Title>
+            {{ movie.title }}
+          </template>
+        </TitleYear>
+      </p>
+      <p class="text-neutral-300 text-sm">
+        <TitleYear>
+          ><template v-slot:Year>
+            {{ movie.year }}
+          </template>
+        </TitleYear>
+      </p>
     </div>
   </div>
 </template>
 
 <script>
+import TitleYear from "./TitleYear.vue";
 export default {
   name: "MovieCard",
   props: {
@@ -47,5 +61,6 @@ export default {
       type: Object,
     },
   },
+  components: { TitleYear },
 };
 </script>

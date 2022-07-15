@@ -9,7 +9,8 @@
     </VueTailwindPagination>
     <section class="my-8">
       <div class="grid gap-x-8 gap-y-4 grid-cols-5">
-        <MovieCard v-for="movie in moviesList" :key="movie.id" :movie="movie" />
+        <MovieCard v-for="movie in moviesList" :key="movie.id" :movie="movie">
+        </MovieCard>
       </div>
     </section>
   </div>
@@ -18,12 +19,14 @@
 <script>
 import VueTailwindPagination from "@ocrv/vue-tailwind-pagination";
 import "@ocrv/vue-tailwind-pagination/styles";
+
 import axios from "axios";
 import MovieCard from "@/components/MovieCard.vue";
 export default {
   name: "MoviesPage",
   components: {
     MovieCard,
+
     VueTailwindPagination,
   },
   data() {

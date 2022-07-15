@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-link
-      to="/movies/1"
+      to="/movies/"
       class="text-green-700 text-2xl mx-48 my-8 font-extrabold font-mono"
     >
       YTS Movies</router-link

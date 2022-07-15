@@ -104,13 +104,21 @@
         v-for="suggestion in suggestions"
         :key="suggestion.id"
       >
-        <div>
+        <div class="w-48">
           <img
-            class="border-4 border-white ml-3 w-48 h-48"
+            class="border-4 border-white ml-3"
             :src="suggestion.medium_cover_image"
             :alt="suggestion.title"
             @click="onSuggestionClick(suggestion.id)"
           />
+          <TitleYear
+            ><template v-slot:Title>
+              {{ suggestion.title }}
+            </template>
+            <template v-slot:Year>
+              {{ suggestion.year }}
+            </template></TitleYear
+          >
         </div>
       </div>
     </div>
@@ -119,8 +127,13 @@
 
 <script>
 import axios from "axios";
+// import MovieCard from "@/components/MovieCard.vue";
+import TitleYear from "@/components/TitleYear.vue";
 export default {
   name: "DetailPage",
+  components: {
+    TitleYear,
+  },
   data() {
     return {
       details: [],
