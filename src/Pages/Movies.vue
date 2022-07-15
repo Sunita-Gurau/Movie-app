@@ -34,15 +34,15 @@ export default {
       moviesList: [],
     };
   },
-  created() {
-    this.fetchData();
-  },
+  created() {},
   methods: {
     pageChange(pageNumber) {
       this.currentPage = pageNumber;
-      this.$router.push(`/movies/${this.currentPage}`);
-
       this.fetchData();
+      this.$router.push({
+        path: "/movies",
+        query: { page: this.currentPage },
+      });
     },
     async fetchData() {
       var response = await axios(`list_movies.json?page=${this.currentPage}`);
@@ -53,7 +53,7 @@ export default {
     },
   },
   mounted() {
-    this.currentPage = 1;
+    this.currentPage = this.$route.query.page;
     this.fetchData();
   },
 };

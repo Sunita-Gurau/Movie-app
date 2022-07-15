@@ -12,7 +12,7 @@ const routes = [
     },
     {
         name: 'MovieCard',
-        path: '/movies/:page',
+        path: '/movies',
         component: MoviesPage
     },
     {
