@@ -1,12 +1,11 @@
 <template>
   <div class="bg-black mx-48 my-8">
-    <VueTailwindPagination
-      :current="currentPage"
+    <VSPagination
+      v-on:pageNoClick="pageChange($event)"
+      v-on:pageNoDecrease="prev($event)"
+      :pageNo="pageNumber"
       :total="total"
-      :per-page="perPage"
-      @page-changed="pageChange($event)"
-    >
-    </VueTailwindPagination>
+    ></VSPagination>
     <section class="my-8">
       <div class="grid gap-x-8 gap-y-4 grid-cols-5">
         <MovieCard v-for="movie in moviesList" :key="movie.id" :movie="movie">
@@ -17,46 +16,50 @@
 </template>
 
 <script>
-import VueTailwindPagination from "@ocrv/vue-tailwind-pagination";
-import "@ocrv/vue-tailwind-pagination/styles";
-
 import axios from "axios";
 import MovieCard from "@/components/MovieCard.vue";
+import VSPagination from "@/components/VSPagination.vue";
 export default {
   name: "MoviesPage",
   components: {
     MovieCard,
-
-    VueTailwindPagination,
+    VSPagination,
   },
   data() {
     return {
-      currentPage: 1,
-      total: 4,
-      perPage: 20,
       moviesList: [],
+      total: 20,
     };
   },
   created() {},
   methods: {
-    pageChange(pageNumber) {
-      this.currentPage = pageNumber;
-      this.fetchData();
+    pageChange(page) {
+      this.pageNumber = page + 1;
       this.$router.push({
         path: "/movies",
-        query: { page: this.currentPage },
+        query: { page: this.pageNumber },
       });
+      this.fetchData();
     },
+    prev(page) {
+      this.pageNumber = page - 1;
+      this.$router.push({
+        path: "/movies",
+        query: { page: this.pageNumber },
+      });
+      this.fetchData();
+    },
+
     async fetchData() {
-      var response = await axios(`list_movies.json?page=${this.currentPage}`);
-      var responseData = response.data.data.movies;
+      let response = await axios(`list_movies.json?page=${this.pageNumber}`);
+      let responseData = response.data.data.movies;
       this.moviesList = responseData;
-      this.perPage = response.data.data.limit;
       this.total = response.data.data.movie_count;
+      console.log(this.total);
     },
   },
   mounted() {
-    this.currentPage = this.$route.query.page;
+    this.pageNumber = this.$route.query.page;
     this.fetchData();
   },
 };
