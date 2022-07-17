@@ -10,17 +10,22 @@
         Previous
       </button> -->
       <button
-        class="px-8 py-3 page bg-black border-[1px] border-white px-3 py-2 font-bold text-base text-white mr-2 rounded"
-        @click="prev(pageNo)"
+        :disabled="pageNo <= 1"
+        class="active:bg-green-500 focus:outline-none focus:ring focus:ring-green-500 px-8 py-3 page bg-black border-[1px] border-white px-3 py-2 font-bold text-base text-white mr-2 rounded disabled:opacity-25"
+        @click="prev(pageNo - 1)"
       >
         Previous
       </button>
       <span v-for="(item, index) in new Array(5)" :key="index">
         <button
-          class="px-8 py-3 bg-black border-[1px] border-white px-3 py-2 font-bold text-base text-white mr-2 rounded active:bg-green-500 focus:outline-none focus:ring focus:ring-green-500"
-          @click="increase(index)"
+          :class="[
+            'pagination-button',
+            pageNo + index == $route.query.page ? 'active' : '',
+          ]"
+          class="px-8 py-3 bg-black border-[1px] border-white px-3 py-2 font-bold text-base text-white mr-2 rounded"
+          @click="increase(pageNo + index)"
         >
-          {{ index + 1 }}
+          {{ pageNo + index }}
         </button>
       </span>
       <!-- <button
@@ -37,8 +42,9 @@
         </button>
       </span> -->
       <button
-        class="px-8 py-3 page bg-black border-[1px] border-white px-3 py-2 font-bold text-base text-white mr-2 rounded"
-        @click="increase(pageNo)"
+        :disabled="pageNo >= getTotalPageCount"
+        class="active:bg-green-500 focus:outline-none focus:ring focus:ring-green-500 px-8 py-3 page bg-black border-[1px] border-white px-3 py-2 font-bold text-base text-white mr-2 rounded disabled:opacity-25"
+        @click="increase(pageNo + 1)"
       >
         Next
       </button>
@@ -50,13 +56,17 @@ export default {
   data() {
     return {
       pageNumber: 1,
-
       perPage: 20,
     };
   },
   computed: {
-    numberPages() {
+    getTotalPageCount() {
       return Math.ceil(this.total / this.perPage);
+    },
+  },
+  watch: {
+    pageNo: function (value) {
+      console.log(value);
     },
   },
   props: {
@@ -80,11 +90,16 @@ export default {
       this.$emit("pageNoDecrease", page);
     },
   },
+  mounted() {},
 };
 </script>
-<!-- <style>
-button:active {
-  border: green;
-  color: green;
+<style>
+.pagination-button {
+  cursor: pointer;
 }
-</style> -->
+.active {
+  background-color: green;
+  border: 1px solid #fff;
+  cursor: auto;
+}
+</style>
