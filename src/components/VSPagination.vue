@@ -14,7 +14,7 @@
             'pagination-button',
             pageNo + index == $route.query.page ? 'active' : '',
           ]"
-          class="px-8 py-3 bg-black border-[1px] border-white px-3 py-2 font-bold text-base text-white mr-2 rounded cursor"
+          class="active:!bg-green-500 px-8 py-3 bg-black border-[1px] border-white px-3 py-2 font-bold text-base text-white mr-2 rounded cursor"
           @click="increase(pageNo + index)"
         >
           {{ pageNo + index }}
