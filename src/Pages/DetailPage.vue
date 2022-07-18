@@ -1,25 +1,25 @@
 <template>
-  <section class="mx-48 my-8 flex">
-    <div class="w-1/4 mr-5">
+  <section class="mx-48 my-8 flex flex-col lg:flex lg:flex-row">
+    <div class="sm:w-full lg:w-1/4 mr-5">
       <img
         :src="details.medium_cover_image"
         :alt="details.title"
         class="w-full border-4 border-white mb-2"
       />
       <button
-        class="w-full bg-green-500 rounded py-2 mb-2 text-white text-xl font-bold"
+        class="w-full bg-green-500 rounded py-2 mb-2 text-white md:text-xl sm:text-xs font-bold"
       >
         <i class="fa-solid fa-download text-black"></i>
         Download
       </button>
       <button
-        class="w-full bg-cyan-400 rounded py-2 text-white text-xl font-bold"
+        class="w-full bg-cyan-400 rounded py-2 text-white md:text-xl sm:text-xs font-bold"
       >
         Watch Now
       </button>
     </div>
-    <div class="w-2/4 px-12 ml-6">
-      <h1 class="text-4xl text-white font-bold pb-5">
+    <div class="sm:w-full lg:w-2/4 px-12 ml-6">
+      <h1 class="lg:text-4xl md:text-2xl sm:text-xs text-white font-bold pb-5">
         {{ details.title }}
       </h1>
       <p class="text-white text-sm font-bold">{{ details.year }}</p>
@@ -47,25 +47,39 @@
         Request Subtitles
       </button>
       <div class="flex items-center">
-        <i class="fa-solid fa-heart text-green-500 text-2xl mr-8"></i>
+        <i
+          class="fa-solid fa-heart text-green-500 lg:text-2xl md:text-xl sm:text-xs mr-8"
+        ></i>
         <p class="text-white text-xl font-bold px-2 mr-2">
           {{ details.like_count }}
         </p>
       </div>
       <div class="flex items-center">
         <i class="fa-solid fa-popcorn"></i>
-        <i class="fa-solid fa-heart text-green-500 text-2xl mr-8"></i>
-        <p class="text-white text-xl font-bold px-2 mr-2">86% Critics</p>
+        <i
+          class="fa-solid fa-heart text-green-500 lg:text-2xl md:text-xl sm:text-xs mr-8"
+        ></i>
+        <p class="text-white md:text-xl sm:text-xs font-bold px-2 mr-2">
+          86% Critics
+        </p>
       </div>
       <div class="flex items-center">
-        <i class="fa-solid fa-people-group text-green-500 text-2xl mr-8"></i>
-        <p class="text-white text-xl font-bold px-2 mr-2">97% - Audience</p>
+        <i
+          class="fa-solid fa-people-group text-green-500 lg:text-2xl md:text-xl sm:text-xs mr-8"
+        ></i>
+        <p class="text-white md:text-xl sm:text-xs font-bold px-2 mr-2">
+          97% - Audience
+        </p>
       </div>
       <div class="flex items-center">
-        <i class="fa-solid fa-heart text-green-500 text-2xl mr-8"></i>
-        <p class="text-white text-xl font-bold px-2 mr-2">
+        <i
+          class="fa-solid fa-heart text-green-500 lg:text-2xl md:text-xl sm:text-xs mr-8"
+        ></i>
+        <p class="text-white md:text-xl sm:text-xs font-bold px-2 mr-2">
           {{ details.rating
-          }}<i class="fa-solid fa-star text-green-500 text-xl pb-3 ml-2"></i>
+          }}<i
+            class="fa-solid fa-star text-green-500 md:text-xl sm:text-xs pb-3 ml-2"
+          ></i>
         </p>
       </div>
       <div class="flex items-center mt-8">
@@ -87,24 +101,28 @@
         </p>
       </div>
       <div>
-        <p class="pb-3 text-xl text-white font-bold">Plot Summary</p>
+        <p class="pb-3 md:text-xl sm:text-xs text-white font-bold">
+          Plot Summary
+        </p>
         <p class="text-base text-white">{{ details.description_intro }}</p>
-        <p class="text-white text-sm my-2 italic font-semibold">
+        <p class="text-white md:text-sm sm:text-xs my-2 italic font-semibold">
           Uploaded By: OTTO
         </p>
-        <span class="text-white text-sm font-bold italic">{{
+        <span class="text-white md:text-sm sm:text-xs font-bold italic">{{
           details.date_uploaded
         }}</span>
       </div>
     </div>
-    <div class="w-1/4">
-      <p class="pl-3 pb-3 text-xl text-white font-bold">Similar Movies</p>
+    <div class="sm:w-full lg:w-1/4">
+      <p class="pl-3 pb-3 md:text-xl sm:text-xs text-white font-bold">
+        Similar Movies
+      </p>
       <div
         class="flex mb-3 flex-col"
         v-for="suggestion in suggestions"
         :key="suggestion.id"
       >
-        <div class="w-48">
+        <div class="sm:w-full lg:w-48">
           <img
             class="border-4 border-white ml-3"
             :src="suggestion.medium_cover_image"

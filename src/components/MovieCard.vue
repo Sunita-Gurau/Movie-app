@@ -10,12 +10,16 @@
         <div
           class="text-center hidden group-hover:block hover:transition-all hover:duration-500 hover:delay-300 hover:ease-in-out"
         >
-          <i class="fa-solid fa-star text-green-500 text-3xl pb-3"></i>
-          <p class="text-white text-2xl font-bold">{{ movie.rating }}</p>
+          <i
+            class="fa-solid fa-star text-green-500 md:text-xl lg:text-3xl sm:text-xs md:pb-3 sm:pb-px"
+          ></i>
+          <p class="text-white md:text-xl lg:text-2xl sm:text-xs font-bold">
+            {{ movie.rating }}
+          </p>
           <p
             v-for="genre in movie.genres"
             :key="genre"
-            class="text-white text-2xl font-bold pt-2 mb-2"
+            class="text-white lg:text-2xl md:text-xl sm:text-xs font-bold md:pt-1 md:mb-1 sm:pt-px sm:mb-px lg:pt-2 lg:mb-2"
           >
             {{ genre }}
           </p>
@@ -24,7 +28,7 @@
           </p> -->
           <router-link
             :to="'/movies/' + movie.id"
-            class="bg-green-500 text-white text-sm px-2 py-2 mt-5 font-semibold rounded"
+            class="bg-green-500 text-white md:text-sm sm:text-xs md:px-2 md:py-2 sm:px-0.5 sm:py-0.5 md:mt-5 sm:mt-px font-semibold rounded"
             >View Details</router-link
           >
         </div>
@@ -33,14 +37,14 @@
 
     <!-- slot -->
     <div class="pl-2">
-      <p class="text-white text-lg font-bold truncate">
+      <p class="text-white lg:text-lg sm:text-xs font-bold truncate">
         <TitleYear>
           ><template v-slot:Title>
             {{ movie.title }}
           </template>
         </TitleYear>
       </p>
-      <p class="text-neutral-300 text-sm">
+      <p class="text-neutral-300 lg:text-sm sm:text-xs">
         <TitleYear>
           ><template v-slot:Year>
             {{ movie.year }}
