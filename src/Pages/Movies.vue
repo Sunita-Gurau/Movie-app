@@ -9,7 +9,9 @@
         :total="total"
       ></VSPagination>
       <section class="my-8">
-        <div class="grid gap-x-8 gap-y-4 grid-cols-5">
+        <div
+          class="grid gap-x-8 gap-y-4 lg:grid-cols-5 grid-cols-2 md:grid-cols-3"
+        >
           <MovieCard v-for="movie in moviesList" :key="movie.id" :movie="movie">
           </MovieCard>
         </div>

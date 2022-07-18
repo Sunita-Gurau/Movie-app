@@ -1,6 +1,6 @@
 <template>
-  <section class="mx-48 my-8 flex">
-    <div class="w-1/4 mr-5">
+  <section class="mx-48 my-8 flex flex-col lg:flex lg:flex-row">
+    <div class="sm:w-full lg:w-1/4 mr-5">
       <img
         :src="details.medium_cover_image"
         :alt="details.title"
@@ -18,7 +18,7 @@
         Watch Now
       </button>
     </div>
-    <div class="w-2/4 px-12 ml-6">
+    <div class="sm:w-full lg:w-2/4 px-12 ml-6">
       <h1 class="text-4xl text-white font-bold pb-5">
         {{ details.title }}
       </h1>
@@ -97,14 +97,14 @@
         }}</span>
       </div>
     </div>
-    <div class="w-1/4">
+    <div class="sm:w-full lg:w-1/4">
       <p class="pl-3 pb-3 text-xl text-white font-bold">Similar Movies</p>
       <div
         class="flex mb-3 flex-col"
         v-for="suggestion in suggestions"
         :key="suggestion.id"
       >
-        <div class="w-48">
+        <div class="sm:w-full lg:w-48">
           <img
             class="border-4 border-white ml-3"
             :src="suggestion.medium_cover_image"
