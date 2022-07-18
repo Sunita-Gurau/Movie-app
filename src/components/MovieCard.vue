@@ -23,7 +23,7 @@
             {{ movie.genres[1] }}
           </p> -->
           <router-link
-            :to="'/movie_id/' + movie.id"
+            :to="'/movies/' + movie.id"
             class="bg-green-500 text-white text-sm px-2 py-2 mt-5 font-semibold rounded"
             >View Details</router-link
           >
