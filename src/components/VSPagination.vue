@@ -14,7 +14,7 @@
             'pagination-button',
             pageNo + index == $route.query.page ? 'active' : '',
           ]"
-          class="active:!bg-green-500 px-8 py-3 bg-black border-[1px] border-white px-3 py-2 font-bold text-base text-white mr-2 rounded cursor"
+          class="px-8 py-3 bg-black border-[1px] border-white px-3 py-2 font-bold text-base text-white mr-2 rounded cursor"
           @click="increase(pageNo + index)"
         >
           {{ pageNo + index }}
@@ -23,7 +23,7 @@
 
       <button
         :disabled="pageNo >= getTotalPageCount"
-        class="px-8 py-3 page bg-black border-[1px] border-white px-3 py-2 font-bold text-base text-white mr-2 rounded disabled:opacity-25"
+        class="active:bg-green-500 focus:outline-none focus:ring focus:ring-green-500 px-8 py-3 page bg-black border-[1px] border-white px-3 py-2 font-bold text-base text-white mr-2 rounded disabled:opacity-25"
         @click="increase(pageNo + 1)"
       >
         Next
@@ -78,7 +78,7 @@ export default {
   cursor: pointer;
 }
 .active {
-  background-color: green;
+  background-color: green !important;
   border: 1px solid #fff;
   cursor: auto;
 }
